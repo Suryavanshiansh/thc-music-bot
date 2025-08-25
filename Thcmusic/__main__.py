@@ -5,8 +5,8 @@ from pyrogram import idle
 from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
-from  import LOGGER, app, userbot
-from Thcmusic.core.call import Tanu
+from config import LOGGER, app, userbot
+from Thcmusic.core.call import Thcmusic
 from Thcmusic.misc import sudo
 from Thcmusic.plugins import ALL_MODULES
 from Thcmusic.utils.database import get_banned_users, get_gbanned
@@ -35,27 +35,25 @@ async def init():
         pass
     await app.start()
     for all_module in ALL_MODULES:
-        importlib.import_module("TanuMusic.plugins" + all_module)
-    LOGGER("TanuMusic.plugins").info("✦ Successfully Imported Modules...💞")
+        importlib.import_module("Thcmusic.plugins" + all_module)
+    LOGGER("Thcmusic.plugins").info("✦ Successfully Imported Modules...💞")
     await userbot.start()
-    await Tanu.start()
+    await Thcmusic.start()
     try:
-        await Tanu.stream_call("https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4")
+        await Thcmusic.stream_call("https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4")
     except NoActiveGroupCall:
-        LOGGER("TanuMusic").error(
-            "✦ Please turn on the videochat of your log group\channel.\n\n✦ Stopping Bot...💣"
+        LOGGER("Thcmusic").error(
+            "✦ Please turn on the videochat of your log group/channel.\n\n✦ Stopping Bot...💣"
         )
         exit()
     except:
         pass
-    await Tanu.decorators()
-    LOGGER("TanuMusic").info(
-        "✦ Created By ➥ Kʀɪsʜɴᴇᴛᴡᴏʀᴋ...🥀"
-    )
+    await Thcmusic.decorators()
+    LOGGER("Thcmusic").info("✦ Bot is now running... 🚀")
     await idle()
     await app.stop()
     await userbot.stop()
-    LOGGER("TanuMusic").info("❖ Stopping Tanu Music Bot...💌")
+    LOGGER("Thcmusic").info("❖ Stopping Thcmusic Bot...💌")
 
 
 if __name__ == "__main__":
